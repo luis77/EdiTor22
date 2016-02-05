@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Imagen:</strong>
+  <%= @attachment.imagen %>
+</p>
+
+<p>
+  <strong>Formato:</strong>
+  <%= @attachment.formato %>
+</p>
+
+<%= link_to 'Edit', edit_attachment_path(@attachment) %> |
+<%= link_to 'Back', attachments_path %>
