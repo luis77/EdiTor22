@@ -63,6 +63,14 @@ class AttachmentsController < ApplicationController
     end
   end
 
+  def change2
+        File.open(Rails.root.join('public'), 'w:binary') do |f|
+          f.write(params[:image].read)
+        end
+
+
+  end
+
   # DELETE /attachments/1
   # DELETE /attachments/1.json
   def destroy

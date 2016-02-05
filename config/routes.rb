@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   post "can/vas2"
 
   resources :attachments
-  post "attachments/change"
+  post "attachments/change2"
+
   
   get 'welcome/index'
 
