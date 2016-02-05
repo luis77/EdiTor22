@@ -1,0 +1,59 @@
+<script>
+  var canvas = document.createElement('canvas');
+var context = canvas.getContext('2d');
+var centerX = canvas.width / 2;
+var centerY = canvas.height / 2;
+var radius = 70;
+
+context.beginPath();
+context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+context.fillStyle = 'green';
+context.fill();
+context.lineWidth = 5;
+context.strokeStyle = '#003300';
+context.stroke();
+
+document.body.appendChild(canvas)
+
+
+var dataURL =  canvas.toDataURL('image/png');
+window.location = dataURL;
+
+
+
+
+   // Convert dataURL to Blob object
+  function dataURLtoBlob(dataURL) {
+    // Decode the dataURL    
+    var binary = atob(dataURL.split(',')[1]);
+    // Create 8-bit unsigned array
+    var array = [];
+    for(var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+    }
+    // Return our Blob object
+    return new Blob([new Uint8Array(array)], {type: 'image/png'});
+  }
+
+
+
+
+   // Get our file
+  var file= dataURLtoBlob(dataURL);
+  // Create new form data
+  var fd = new FormData();
+  // Append our Canvas image file to the form data
+  fd.append("image", file);
+  // And send it
+  $.ajax({
+     url: "/can/vas2",
+     type: "POST",
+     data: fd,
+     processData: false,
+     contentType: false,
+  });
+
+
+
+
+</script>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'can/vas'
+  post "can/vas2"
+
   resources :attachments
   post "attachments/change"
   
